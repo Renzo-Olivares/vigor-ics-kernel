@@ -724,10 +724,12 @@ extern int mdp_lcd_rd_cnt_offset_slow;
 extern int mdp_lcd_rd_cnt_offset_fast;
 extern int mdp_usec_diff_threshold;
 
+
 #ifdef CONFIG_FB_MSM_LCDC
 extern int first_pixel_start_x;
 extern int first_pixel_start_y;
 #endif
+
 
 extern atomic_t dsi_unset_cnt;
 

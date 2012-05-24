@@ -820,7 +820,7 @@ static struct msm_bus_vectors grp2d0_max_vectors[] = {
 		.src = MSM_BUS_MASTER_GRAPHICS_2D_CORE0,
 		.dst = MSM_BUS_SLAVE_EBI_CH0,
 		.ab = 0,
-		.ib = KGSL_CONVERT_TO_MBPS(990),
+		.ib = KGSL_CONVERT_TO_MBPS(2096),
 	},
 };
 
@@ -855,7 +855,7 @@ static struct msm_bus_vectors grp2d1_max_vectors[] = {
 		.src = MSM_BUS_MASTER_GRAPHICS_2D_CORE1,
 		.dst = MSM_BUS_SLAVE_EBI_CH0,
 		.ab = 0,
-		.ib = KGSL_CONVERT_TO_MBPS(990),
+		.ib = KGSL_CONVERT_TO_MBPS(2096),
 	},
 };
 
@@ -1165,6 +1165,25 @@ struct platform_device msm_device_ssbi_pmic2 = {
 #endif
 
 #ifdef CONFIG_I2C_SSBI
+/* 8058 PMIC SSBI on /dev/i2c-6 */
+#define MSM_SSBI1_PMIC1C_PHYS	0x00500000
+static struct resource msm_ssbi1_resources[] = {
+	{
+		.name   = "ssbi_base",
+		.start	= MSM_SSBI1_PMIC1C_PHYS,
+		.end	= MSM_SSBI1_PMIC1C_PHYS + SZ_4K - 1,
+		.flags	= IORESOURCE_MEM,
+	},
+};
+
+struct platform_device msm_device_ssbi1 = {
+	.name		= "i2c_ssbi",
+	.id		= MSM_SSBI1_I2C_BUS_ID,
+	.num_resources	= ARRAY_SIZE(msm_ssbi1_resources),
+	.resource	= msm_ssbi1_resources,
+};
+
+
 /* 8901 PMIC SSBI on /dev/i2c-7 */
 #define MSM_SSBI2_PMIC2B_PHYS	0x00C00000
 static struct resource msm_ssbi2_resources[] = {

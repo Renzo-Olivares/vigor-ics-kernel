@@ -32,6 +32,39 @@
 #endif
 #include <mach/msm_bus.h>
 
+#define BIT0                    0x00000001
+#define BIT1                    0x00000002
+#define BIT2                    0x00000004
+#define BIT3                    0x00000008
+#define BIT4                    0x00000010
+#define BIT5                    0x00000020
+#define BIT6                    0x00000040
+#define BIT7                    0x00000080
+#define BIT8                    0x00000100
+#define BIT9                    0x00000200
+#define BIT10                   0x00000400
+#define BIT11                   0x00000800
+#define BIT12                   0x00001000
+#define BIT13                   0x00002000
+#define BIT14                   0x00004000
+#define BIT15                   0x00008000
+#define BIT16                   0x00010000
+#define BIT17                   0x00020000
+#define BIT18                   0x00040000
+#define BIT19                   0x00080000
+#define BIT20                   0x00100000
+#define BIT21                   0x00200000
+#define BIT22                   0x00400000
+#define BIT23                   0x00800000
+#define BIT24                   0x01000000
+#define BIT25                   0x02000000
+#define BIT26                   0x04000000
+#define BIT27                   0x08000000
+#define BIT28                   0x10000000
+#define BIT29                   0x20000000
+#define BIT30                   0x40000000
+#define BIT31                   0x80000000
+
 struct msm_camera_io_ext {
 	uint32_t mdcphy;
 	uint32_t mdcsz;
@@ -280,10 +313,11 @@ struct msm_camera_sensor_info {
 	struct msm_camera_sensor_strobe_flash_data *strobe_flash_data;
 	char *eeprom_data;
 	struct msm_camera_gpio_conf *gpio_conf;
-	enum msm_camera_type camera_type;
 	struct msm_actuator_info *actuator_info;
 	int (*camera_power_on)(void);
 	int (*camera_power_off)(void);
+	int (*camera_main_get_probe)(void);
+	void (*camera_main_set_probe)(int);
 	int use_rawchip;
 	int (*sensor_version)(void);
 #if 1 /* HTC to be removed */
@@ -410,6 +444,7 @@ struct msm_panel_common_pdata {
 	int (*bkl_enable)(int);
 	int fpga_3d_config_addr;
 	struct gamma_curvy *abl_gamma_tbl;
+        struct mdp_reg *color_enhancment_tbl;
 };
 
 struct lcdc_platform_data {

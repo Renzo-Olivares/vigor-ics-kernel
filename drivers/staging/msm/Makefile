@@ -60,6 +60,7 @@ ifeq ($(CONFIG_FB_MSM_MDDI_AUTO_DETECT),y)
 obj-y += mddi_prism.o
 obj-y += mddi_toshiba.o
 obj-y += mddi_toshiba_vga.o
+obj-y += mddi_toshiba_wvga.o
 obj-y += mddi_toshiba_wvga_pt.o
 obj-y += mddi_sharp.o
 else

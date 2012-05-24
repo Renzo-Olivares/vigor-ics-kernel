@@ -18,6 +18,7 @@
 #include <linux/platform_device.h>
 #include <linux/slab.h>
 #include <linux/irq.h>
+#include <linux/init.h>
 #include <linux/msm_ssbi.h>
 #include <linux/mfd/core.h>
 #include <linux/mfd/pmic8058.h>
@@ -639,7 +640,7 @@ static struct pm8xxx_drvdata pm8058_drvdata = {
 	.pmic_get_revision	= pm8058_get_revision,
 };
 
-static const struct resource pm8058_charger_resources[] __devinitconst = {
+static const struct resource pm8058_charger_resources[] /* __devinitconst */ = {
 	SINGLE_IRQ_RESOURCE("CHGVAL",		PM8058_CHGVAL_IRQ),
 	SINGLE_IRQ_RESOURCE("CHGINVAL",		PM8058_CHGINVAL_IRQ),
 	SINGLE_IRQ_RESOURCE("CHGILIM",		PM8058_CHGILIM_IRQ),
@@ -670,7 +671,7 @@ static struct mfd_cell pm8058_charger_cell __devinitdata = {
 	.num_resources	= ARRAY_SIZE(pm8058_charger_resources),
 };
 
-static const struct resource misc_cell_resources[] __devinitconst = {
+static const struct resource misc_cell_resources[] /* __devinitconst */ = {
 	SINGLE_IRQ_RESOURCE("pm8xxx_osc_halt_irq", PM8058_OSCHALT_IRQ),
 };
 
@@ -697,7 +698,7 @@ static struct mfd_cell xoadc_cell __devinitdata = {
 	.num_resources	= ARRAY_SIZE(xoadc_resources),
 };
 
-static const struct resource thermal_alarm_cell_resources[] __devinitconst = {
+static const struct resource thermal_alarm_cell_resources[] /* __devinitconst */ = {
 	SINGLE_IRQ_RESOURCE("pm8058_tempstat_irq", PM8058_TEMPSTAT_IRQ),
 	SINGLE_IRQ_RESOURCE("pm8058_overtemp_irq", PM8058_OVERTEMP_IRQ),
 };
@@ -728,7 +729,7 @@ static struct mfd_cell debugfs_cell __devinitdata = {
 	.pdata_size	= sizeof("pm8058-dbg"),
 };
 
-static const struct resource othc0_cell_resources[] __devinitconst = {
+static const struct resource othc0_cell_resources[] /* __devinitconst */ = {
 	{
 		.name	= "othc_base",
 		.start	= PM8058_OTHC_CNTR_BASE0,
@@ -737,7 +738,7 @@ static const struct resource othc0_cell_resources[] __devinitconst = {
 	},
 };
 
-static const struct resource othc1_cell_resources[] __devinitconst = {
+static const struct resource othc1_cell_resources[] /* __devinitconst */ = {
 	SINGLE_IRQ_RESOURCE(NULL, PM8058_SW_1_IRQ),
 	SINGLE_IRQ_RESOURCE(NULL, PM8058_IR_1_IRQ),
 	{
@@ -748,7 +749,7 @@ static const struct resource othc1_cell_resources[] __devinitconst = {
 	},
 };
 
-static const struct resource othc2_cell_resources[] __devinitconst = {
+static const struct resource othc2_cell_resources[] /* __devinitconst */ = {
 	{
 		.name	= "othc_base",
 		.start	= PM8058_OTHC_CNTR_BASE2,
@@ -757,7 +758,7 @@ static const struct resource othc2_cell_resources[] __devinitconst = {
 	},
 };
 
-static const struct resource batt_alarm_cell_resources[] __devinitconst = {
+static const struct resource batt_alarm_cell_resources[] /* __devinitconst */ = {
 	SINGLE_IRQ_RESOURCE("pm8058_batt_alarm_irq", PM8058_BATT_ALARM_IRQ),
 };
 
@@ -814,7 +815,7 @@ static struct mfd_cell nfc_cell __devinitdata = {
 	.id		= -1,
 };
 
-static const struct resource rtc_cell_resources[] __devinitconst = {
+static const struct resource rtc_cell_resources[] /* __devinitconst */ = {
 	[0] = SINGLE_IRQ_RESOURCE(NULL, PM8058_RTC_ALARM_IRQ),
 	[1] = {
 		.name   = "pmic_rtc_base",
@@ -831,7 +832,7 @@ static struct mfd_cell rtc_cell __devinitdata = {
 	.num_resources  = ARRAY_SIZE(rtc_cell_resources),
 };
 
-static const struct resource resources_pwrkey[] __devinitconst = {
+static const struct resource resources_pwrkey[] /* __devinitconst */ = {
 	SINGLE_IRQ_RESOURCE(NULL, PM8058_PWRKEY_REL_IRQ),
 	SINGLE_IRQ_RESOURCE(NULL, PM8058_PWRKEY_PRESS_IRQ),
 };
@@ -860,7 +861,7 @@ static struct mfd_cell keypad_cell __devinitdata = {
 	.resources	= resources_keypad,
 };
 
-static const struct resource mpp_cell_resources[] __devinitconst = {
+static const struct resource mpp_cell_resources[] /* __devinitconst */ = {
 	{
 		.start	= PM8058_IRQ_BLOCK_BIT(PM8058_MPP_BLOCK_START, 0),
 		.end	= PM8058_IRQ_BLOCK_BIT(PM8058_MPP_BLOCK_START, 0)
@@ -876,7 +877,7 @@ static struct mfd_cell mpp_cell __devinitdata = {
 	.num_resources	= ARRAY_SIZE(mpp_cell_resources),
 };
 
-static const struct resource gpio_cell_resources[] __devinitconst = {
+static const struct resource gpio_cell_resources[] /* __devinitconst */ = {
 	[0] = {
 		.start = PM8058_IRQ_BLOCK_BIT(PM8058_GPIO_BLOCK_START, 0),
 		.end   = PM8058_IRQ_BLOCK_BIT(PM8058_GPIO_BLOCK_START, 0)

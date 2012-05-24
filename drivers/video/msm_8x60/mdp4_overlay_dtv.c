@@ -56,8 +56,11 @@ static void __mdp_outp(uint32 port, uint32 value)
 #endif
 
 atomic_t mdp_dtv_on;
+
+/*
 static int first_pixel_start_x;
 static int first_pixel_start_y;
+*/
 
 struct mdp4_overlay_pipe *dtv_pipe;
 

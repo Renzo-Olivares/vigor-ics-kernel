@@ -55,9 +55,7 @@ struct tps65200_chg_int_notifier {
 	void (*func)(int int_reg, int value);
 };
 
-#if defined(CONFIG_MACH_HOLIDAY)
 extern u8 batt_charging_state;
-#endif
 
 #ifdef CONFIG_TPS65200
 extern int tps_set_charger_ctrl(u32 ctl);

@@ -28,7 +28,7 @@ config FB_MSM_LCDC_HW
 config FB_MSM_LCDC
 	bool "Support for integrated LCD controller in qsd8x50 ,MSM7x27 ,MSM7x30 and MSM8x60"
 	depends on FB_MSM && (MSM_MDP31 || MSM_MDP302 || MSM_MDP40)
-	default n
+	default y
 
 config FB_MSM_LCDC_PANEL
 	bool
@@ -59,15 +59,15 @@ config FB_MSM_MDP_ABL
 choice
 	prompt "Default framebuffer color depth"
 	depends on MSM_MDP40 || MSM_MDP31
-	default FB_MSM_8X60_DEFAULT_DEPTH_RGBA8888
+	default FB_MSM_DEFAULT_DEPTH_RGBA8888
 
-config FB_MSM_8X60_DEFAULT_DEPTH_RGB565
+config FB_MSM_DEFAULT_DEPTH_RGB565
 	bool "16 bits per pixel (RGB565)"
 
-config FB_MSM_8X60_DEFAULT_DEPTH_ARGB8888
+config FB_MSM_DEFAULT_DEPTH_ARGB8888
 	bool "32 bits per pixel (ARGB8888)"
 
-config FB_MSM_8X60_DEFAULT_DEPTH_RGBA8888
+config FB_MSM_DEFAULT_DEPTH_RGBA8888
 	bool "32 bits per pixel (RGBA8888)"
 
 endchoice
@@ -156,7 +156,7 @@ config FB_MSM_LCDC_SAMSUNG_WSVGA
 config FB_MSM_LCDC_AUO_WVGA
 	bool
 	select FB_MSM_LCDC_PANEL
-	default n 
+	default y
 
 config FB_MSM_LCDC_AUO_WXGA
 	bool
@@ -212,13 +212,12 @@ config FB_MSM_OVERLAY_WRITEBACK
 
 config FB_MSM_MIPI_PANEL_DETECT
 	depends on ARCH_MSM8X60
-	bool
+	bool "MIPI Panel Detect + LCDC panel"
 	select FB_MSM_MIPI_RENESAS_CMD_WVGA_PT
 	select FB_MSM_MIPI_NOVATEK_CMD_QHD_PT
 	select FB_MSM_MIPI_HIMAX_VIDEO_720P_PT
+	select FB_MSM_LCDC_SAMSUNG_WSVGA
 	select FB_MSM_MIPI_ORISE_CMD_QHD_PT
-	---help---
-	"MIPI Panel Detect + LCDC panel"
 
 config LCDC_TURN_ON_BL_AFTER_PANEL_ON
 	bool "Turn On BL again after turn on LCDC panel"

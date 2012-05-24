@@ -552,4 +552,6 @@ endif
 
 obj-$(CONFIG_PERFLOCK) += perflock.o
 obj-$(CONFIG_MFD_MAX8957) += max8957_gpio.o
-obj-y += display/
+
+#obj-y += display/
+

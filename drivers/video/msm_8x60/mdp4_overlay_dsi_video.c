@@ -40,8 +40,10 @@
 
 #define DSI_VIDEO_BASE	0xE0000
 
+/*
 static int first_pixel_start_x;
 static int first_pixel_start_y;
+*/
 
 static int writeback_offset;
 static int writeback_size;

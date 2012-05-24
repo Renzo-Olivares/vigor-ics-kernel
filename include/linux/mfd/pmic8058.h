@@ -115,6 +115,15 @@ enum pon_config{
 	MAX_PON_CONFIG,
 };
 
+/* vin_sel: Voltage Input Select */
+#define	PM_GPIO_VIN_VPH			0
+#define	PM_GPIO_VIN_BB			1
+#define	PM_GPIO_VIN_S3			2
+#define	PM_GPIO_VIN_L7			4
+#define	PM_GPIO_VIN_L6			5
+#define	PM_GPIO_VIN_L5			6
+#define	PM_GPIO_VIN_L2			7
+
 enum pm8058_smpl_delay {
 	PM8058_SMPL_DELAY_0p5,
 	PM8058_SMPL_DELAY_1p0,
@@ -123,6 +132,7 @@ enum pm8058_smpl_delay {
 };
 
 struct pm8058_platform_data {
+	int		irq_base;
 	struct pm8xxx_mpp_platform_data		*mpp_pdata;
 	struct pm8xxx_keypad_platform_data      *keypad_pdata;
 	struct pm8xxx_gpio_platform_data	*gpio_pdata;
